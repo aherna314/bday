@@ -79,7 +79,6 @@
   </div>
   <div id="party-info">
     <!-- Replace this placeholder text with your party information -->
-    <p style="color: white; font-weight: bold;">Join us to celebrate Alexa's 23rd birthday!</p>
     <p style="color: white; font-weight: bold;">voy a cumplir a&ntildeos !!!!</p>
     <p style="color: white; font-weight: bold;">Fecha: Abril 13, 2024</p>
     <p style="color: white; font-weight: bold;">Lugar: Hehehe</p>
@@ -94,12 +93,20 @@
   </audio>
 </div>
 <script>
+  var audioDuration = 60000; // Set the duration in milliseconds (60 seconds in this example)
+
   function playMusic() {
     var audio = document.getElementById("background-music");
     if (audio.paused) {
       audio.play();
       document.getElementById("play-button").classList.add("clicked");
       changeBackground(); // Call the function to change background when the button is clicked
+
+      // Stop the music after the specified duration
+      setTimeout(function() {
+        audio.pause();
+        document.getElementById("play-button").classList.remove("clicked");
+      }, audioDuration);
     } else {
       audio.pause();
       document.getElementById("play-button").classList.remove("clicked");
