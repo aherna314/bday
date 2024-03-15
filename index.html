@@ -198,11 +198,13 @@ function showGIF() {
   var imageIndex = 0;
   var changeInterval;
 
+
+  
   function changeBackground() {
     changeInterval = setInterval(function () {
-      document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
-      document.body.style.backgroundSize = "cover";
-      document.body.style.opacity = "0.7"; // Set opacity to 0.7
+      document.documentElement.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
+      document.documentElement.style.backgroundSize = "cover";
+      document.documentElement.style.opacity = "0.7"; // Set opacity to 0.7
       imageIndex = (imageIndex + 1) % backgroundImages.length;
     }, 500); // Change background every 3 seconds
   }
