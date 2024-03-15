@@ -124,9 +124,7 @@ background-color:#ff00ff;
 
 
 
-
-window.onload = preloadImages;
-window.onload = preloadNewGIF;
+window.onload = preloadContent;
 
 var changeBackgroundInterval; // Define a variable to hold the interval ID
 
@@ -137,6 +135,13 @@ var backgroundImages = [
     'https://dl.dropboxusercontent.com/scl/fi/fz0hqs9pbsrdgp072n918/blue.jpg?rlkey=f4rwejl7844rggfmuifxs1sij&dl=0'  /* Blue background image */
 ];
 
+var newGIFUrl = 'https://www.dl.dropboxusercontent.com/scl/fi/8yl3s8jeuxl44566w6e68/f801a36277fef9657a41b4c5954506e1.gif?rlkey=54xg0j5qdsx3cqitweqix3hh8&dl=0'; // URL of the new GIF
+
+function preloadContent() {
+    preloadImages(); // Preload background images
+    preloadNewGIF(); // Preload new GIF
+}
+
 function preloadImages() {
     for (var i = 0; i < backgroundImages.length; i++) {
         var img = new Image();
@@ -144,13 +149,14 @@ function preloadImages() {
     }
 }
 
-  
+function preloadNewGIF() {
+    var gif = new Image();
+    gif.src = newGIFUrl;
+}
+
 function changeBackground() {
     var imageIndex = 0; // Initialize image index
-        document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.opacity = "0.7"; // Set opacity to 0.7
-        imageIndex = (imageIndex + 1) % backgroundImages.length;
+        
     // Change background every 0.5 seconds
     changeBackgroundInterval = setInterval(function() {
         document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
