@@ -147,7 +147,10 @@ function preloadImages() {
   
 function changeBackground() {
     var imageIndex = 0; // Initialize image index
-
+        document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.opacity = "0.7"; // Set opacity to 0.7
+        imageIndex = (imageIndex + 1) % backgroundImages.length;
     // Change background every 0.5 seconds
     changeBackgroundInterval = setInterval(function() {
         document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
