@@ -95,13 +95,22 @@
     'https://dl.dropboxusercontent.com/scl/fi/fz0hqs9pbsrdgp072n918/blue.jpg?rlkey=f4rwejl7844rggfmuifxs1sij&dl=0'  /* Blue background image */
   ];
   var imageIndex = 0;
+
+  function preloadImages() {
+    for (var i = 0; i < backgroundImages.length; i++) {
+      var img = new Image();
+      img.src = backgroundImages[i];
+    }
+  }
+window.onload = preloadImages;
+
 function changeBackground() {
   var intervalId = setInterval(function() {
     document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
     document.body.style.backgroundSize = "cover";
     document.body.style.opacity = "0.7"; // Set opacity to 0.7
     imageIndex = (imageIndex + 1) % backgroundImages.length;
-  }, 1000); // 1000 milliseconds = 1 second
+  }, 500); // 1000 milliseconds = 1 second
 
   // Stop the interval after 4 seconds
   setTimeout(function() {
