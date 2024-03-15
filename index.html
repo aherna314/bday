@@ -48,9 +48,9 @@
     text-align: center;
     margin-top: 50px;
   }
-  #play-button {
-    display: block;
-    margin: 0 auto;
+   #play-button, #no-button {
+    display: inline-block;
+    margin: 10px;
     padding: 10px 20px;
     font-size: 20px;
     background-color: pink;
@@ -58,7 +58,7 @@
     border-radius: 5px;
     cursor: pointer;
   }
-  #play-button.clicked {
+  #play-button.clicked,  #no-button.clicked  {
     animation: glow 1s infinite alternate; /* Add glow animation */
   }
   @keyframes glow {
@@ -170,6 +170,7 @@
       imageIndex = (imageIndex + 1) % backgroundImages.length;
     }, 500); // Change background every 3 seconds
   }
+
   function showGIF() {
     var gif = document.createElement('img');
     gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0'; // Replace 'URL_OF_YOUR_GIF' with the actual URL of your GIF
@@ -184,6 +185,8 @@
     };
     document.body.appendChild(gif);
   }
+
+
 </script>
 </body>
 </html>
