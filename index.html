@@ -183,6 +183,8 @@ function stopBackgroundChanging() {
 // Function to handle the "No?" button click
 function handleNoButtonClick() {
     stopBackgroundChanging(); // Stop background image changing
+    document.body.style.backgroundImage = "none"; // Reset background image
+    document.body.style.backgroundColor = "rgba(255, 233, 240, 0)"; // Set background color to transparent
 }
 
 
