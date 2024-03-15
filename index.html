@@ -124,6 +124,11 @@ background-color:#ff00ff;
 
 
 
+
+
+
+  
+
 window.onload = preloadContent;
 
 var changeBackgroundInterval; // Define a variable to hold the interval ID
@@ -154,29 +159,32 @@ function preloadNewGIF() {
     gif.src = newGIFUrl;
 }
 
+
 function changeBackground() {
-    var imageIndex = 0; // Initialize image index
+    if (!changeBackgroundInterval) { // Check if the interval is not already running
+        var imageIndex = 0; // Initialize image index
         
-    // Change background every 0.5 seconds
-    changeBackgroundInterval = setInterval(function() {
-        document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.opacity = "0.7"; // Set opacity to 0.7
-        imageIndex = (imageIndex + 1) % backgroundImages.length;
-    }, 500); // 500 milliseconds = 0.5 seconds
+        // Start the interval only if it's not already running
+        changeBackgroundInterval = setInterval(function() {
+            document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
+            document.body.style.backgroundSize = "cover";
+            document.body.style.opacity = "0.7"; // Set opacity to 0.7
+            imageIndex = (imageIndex + 1) % backgroundImages.length;
+        }, 500); // 500 milliseconds = 0.5 seconds
+    }
 }
 
 // Function to stop the background image changing interval
 function stopBackgroundChanging() {
     clearInterval(changeBackgroundInterval); // Clear the interval
+    changeBackgroundInterval = null; // Reset the interval variable
 }
 
 // Function to handle the "No?" button click
 function handleNoButtonClick() {
     stopBackgroundChanging(); // Stop background image changing
-    document.body.style.backgroundImage = "none"; // Reset background image
-    document.body.style.backgroundColor = "rgba(255, 233, 240, 0)"; // Set background color to transparent
 }
+
 
 
   function playMusic() {
