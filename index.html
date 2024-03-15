@@ -12,9 +12,9 @@
     height: 100vh; /* Ensure full height */
   }
 
+
   #button-container {
     text-align: center;
-    margin-top: 10px; /* Adjust top margin */
   }
 
   body {
@@ -68,7 +68,7 @@
     margin-bottom: 10px; /* Adjusted margin */
   }
 
-  #play-button, #no-button {
+  #play-button,  #no-button {
     display: inline-block;
     margin: 10px;
     padding: 10px 20px;
@@ -77,7 +77,6 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
   }
 
   #play-button.clicked, #no-button.clicked {
@@ -109,11 +108,11 @@
   </div>
   <!-- Button to play music -->
   <div id="center-container">
-    <div id="button-container">
-      <button id="play-button" onclick="showTicket(); playMusic(); changeBackground()">Si?</button>
-      <button id="no-button" onclick="showGIF()">No?</button>
-    </div>
+  <div id="button-container">
+    <button id="play-button" onclick="showTicket(); playMusic(); changeBackground()">Si?</button>
+    <button id="no-button" onclick="showGIF()">No?</button>
   </div>
+
 </div>
 <script>
   var audioDuration = 7000; // Set the duration in milliseconds (60 seconds in this example)
