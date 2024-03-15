@@ -100,7 +100,7 @@
    <div id="center-container">
   <div id="button-container">
     <button id="play-button" onclick="showTicket(); playMusic(); changeBackground()">Si?</button>
-    <button id="no-button" onclick="showGIF()">No?</button>
+    <!-- <button id="no-button" onclick="showGIF()">No?</button> -->
   </div>
    </div>
 </div>
@@ -179,18 +179,18 @@
     }, 500); // Change background every 3 seconds
   }
 
-  function showGIF() {
-  var gif = document.createElement('img');
-  gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0';
-  gif.style.position = 'fixed';
-  gif.style.top = '0';
-  gif.style.left = '0';
-  gif.style.width = '100vw';
-  gif.style.height = '100vh';
-  gif.style.zIndex = '9999'; // Set a high z-index to ensure the GIF displays above other elements
+//   function showGIF() {
+//   var gif = document.createElement('img');
+//   gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0';
+//   gif.style.position = 'fixed';
+//   gif.style.top = '0';
+//   gif.style.left = '0';
+//   gif.style.width = '100vw';
+//   gif.style.height = '100vh';
+//   gif.style.zIndex = '9999'; // Set a high z-index to ensure the GIF displays above other elements
 
-  document.body.appendChild(gif);
-}
+//   document.body.appendChild(gif);
+// }
 </script>
 </body>
 </html>
