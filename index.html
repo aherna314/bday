@@ -22,7 +22,7 @@
     pointer-events: none;
     background-image: url('https://i.gifer.com/WG8P.gif'); /* Transparent GIF */
     z-index: 1000; /* Ensure the overlay is on top of other content */
-    opacity: 0.5; /* Adjust opacity (0.0 to 1.0) */
+    opacity: 0.3; /* Adjust opacity (0.0 to 1.0) */
   }
   #header {
     text-align: center;
@@ -61,7 +61,7 @@
     text-align: center;
     margin-top: 10px; /* Adjusted margin */
     margin-bottom: 10px; /* Adjusted margin */
-    color: #ff00ff;
+
   }
 
  #play-button,  #no-button {
@@ -73,6 +73,7 @@
     border-radius: 5px;
     cursor: pointer;
     display:inline-block;
+background-color:#ff00ff;
   }
 
   #play-button.clicked, #no-button.clicked {
@@ -130,16 +131,16 @@ function changeBackground() {
   </div>
   <div id="party-info">
     <!-- Replace this placeholder text with your party information -->
-    <p style="color: white; font-weight: bold;">voy a cumplir a&ntildeos !!!!</p>
-    <p style="color: white; font-weight: bold;">Fecha: Abril 7 o 13, check back later</p>
-    <p style="color: white; font-weight: bold;">Lugar: Alberca de Lalo, 200 Desert Pass</p>
-    <p style="color: white; font-weight: bold;">if u dont go ur gay</p>
+    <p style="color: #ff00ff; font-weight: bold;">voy a cumplir a&ntildeos !!!!</p>
+    <p style="color: #ff00ff; font-weight: bold;">Fecha: Abril 7 o 13, check back later</p>
+    <p style="color: #ff00ff; font-weight: bold;">Lugar: Alberca de Lalo, 200 Desert Pass</p>
+    <p style="color: #ff00ff; font-weight: bold;">if u dont go ur gay</p>
   </div>
   <!-- Button to play music -->
  
   <div id="button-container">
-    <button id="play-button" onclick="changeBackground();showTicket(); playMusic() ">Si?</button>
-    <button id="no-button" onclick="showGIF()">No?</button>
+    <button id="play-button" style="color: white;font-weight: bold;" onclick="changeBackground();showTicket(); playMusic() ">Si ?</button>
+    <button id="no-button" style="color: white;font-weight: bold;" onclick="showGIF()">No ?</button>
 
 
 </div>
