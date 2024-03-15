@@ -90,38 +90,7 @@ background-color:#ff00ff;
     }
   }
 </style>
-<script>
-  var backgroundImages = [
-    'https://dl.dropboxusercontent.com/scl/fi/hphl9nmu54b5mbtyl8bps/red.png?rlkey=4m4vbpmeycv35p8d0qvdgpvad&dl=0', /* Red background image */
-    'https://dl.dropboxusercontent.com/scl/fi/orbxrvmcbtf1ypws5ndct/wp4477741-plain-green-wallpapers.jpg?rlkey=5sadca731k4eddys68g9t6k1v&dl=0', /* Green background image */
-    'https://dl.dropboxusercontent.com/scl/fi/fz0hqs9pbsrdgp072n918/blue.jpg?rlkey=f4rwejl7844rggfmuifxs1sij&dl=0'  /* Blue background image */
-  ];
-  var imageIndex = 0;
-
-  function preloadImages() {
-    for (var i = 0; i < backgroundImages.length; i++) {
-      var img = new Image();
-      img.src = backgroundImages[i];
-    }
-  }
-window.onload = preloadImages;
-
-function changeBackground() {
-  var intervalId = setInterval(function() {
-    document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
-    document.body.style.backgroundSize = "cover";
-    document.body.style.opacity = "0.7"; // Set opacity to 0.7
-    imageIndex = (imageIndex + 1) % backgroundImages.length;
-  }, 500); // 1000 milliseconds = 1 second
-
-  // Stop the interval after 4 seconds
-  setTimeout(function() {
-    clearInterval(intervalId); // Clear the interval
-  }, 7000); // 4000 milliseconds = 4 seconds
-}
-
-
-</script></head>
+</head>
 <body>
 <div id="container">
 
@@ -135,30 +104,82 @@ function changeBackground() {
     <p style="color: #ff00ff; font-weight: bold;">Fecha: Abril 7 o 13, check back later</p>
     <p style="color: #ff00ff; font-weight: bold;">Lugar: Alberca de Lalo, 200 Desert Pass</p>
     <p style="color: #ff00ff; font-weight: bold;">if u dont go ur gay</p>
-    <audio id="background-music" loop>
-    <source src="https://dl.dropboxusercontent.com/scl/fi/jjljz7vqz3u0bmvlrfmrb/Girl-Front-LOONA-ODD-EYE-Instrumental-Best-part.mp3?rlkey=pxe8molf8ayvqhdhr0n9cnyaj" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
   </div>
   <!-- Button to play music -->
  
   <div id="button-container">
     <button id="play-button" style="color: white;font-weight: bold;" onclick="changeBackground();showTicket(); playMusic() ">Si ?</button>
-    <button id="no-button" style="color: white;font-weight: bold;" onclick="showGIF()">No ?</button>
+    <button id="no-button" style="color: white;font-weight: bold;" onclick="handleNoButtonClick(); showGIF()">No ?</button>
 
 
 </div>
+  <audio id="background-music" loop>
+    <source src="https://dl.dropboxusercontent.com/scl/fi/jjljz7vqz3u0bmvlrfmrb/Girl-Front-LOONA-ODD-EYE-Instrumental-Best-part.mp3?rlkey=pxe8molf8ayvqhdhr0n9cnyaj" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
 <script>
+
+
+
+
+
+
+window.onload = preloadImages;
+window.onload = preloadNewGIF;
+
+var changeBackgroundInterval; // Define a variable to hold the interval ID
+
+// Preload the background images
+var backgroundImages = [
+    'https://dl.dropboxusercontent.com/scl/fi/hphl9nmu54b5mbtyl8bps/red.png?rlkey=4m4vbpmeycv35p8d0qvdgpvad&dl=0', /* Red background image */
+    'https://dl.dropboxusercontent.com/scl/fi/orbxrvmcbtf1ypws5ndct/wp4477741-plain-green-wallpapers.jpg?rlkey=5sadca731k4eddys68g9t6k1v&dl=0', /* Green background image */
+    'https://dl.dropboxusercontent.com/scl/fi/fz0hqs9pbsrdgp072n918/blue.jpg?rlkey=f4rwejl7844rggfmuifxs1sij&dl=0'  /* Blue background image */
+];
+
+function preloadImages() {
+    for (var i = 0; i < backgroundImages.length; i++) {
+        var img = new Image();
+        img.src = backgroundImages[i];
+    }
+}
+
+  
+function changeBackground() {
+    var imageIndex = 0; // Initialize image index
+
+    // Change background every 0.5 seconds
+    changeBackgroundInterval = setInterval(function() {
+        document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.opacity = "0.7"; // Set opacity to 0.7
+        imageIndex = (imageIndex + 1) % backgroundImages.length;
+    }, 500); // 500 milliseconds = 0.5 seconds
+}
+
+// Function to stop the background image changing interval
+function stopBackgroundChanging() {
+    clearInterval(changeBackgroundInterval); // Clear the interval
+}
+
+// Function to handle the "No?" button click
+function handleNoButtonClick() {
+    stopBackgroundChanging(); // Stop background image changing
+    document.body.style.backgroundImage = "none"; // Reset background image
+    document.body.style.backgroundColor = "rgba(255, 233, 240, 0)"; // Set background color to transparent
+}
+
+
   function playMusic() {
     var audio = document.getElementById("background-music");
     if (audio.paused) {
-      audio.play();
-      document.getElementById("play-button").classList.add("clicked");
+        audio.play();
+        document.getElementById("play-button").classList.add("clicked");
     } else {
-      audio.pause();
-      document.getElementById("play-button").classList.remove("clicked");
+        audio.pause();
+        document.getElementById("play-button").classList.remove("clicked");
     }
-  }
+}
 
   function showTicket() {
     // Create a container for the ticket and apply overlay to it
@@ -222,27 +243,38 @@ function changeBackground() {
 
     document.body.appendChild(ticket); // Append the ticket to the body
 }
-function showGIF() {
-  var gif = document.createElement('img');
-  gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0';
-  gif.style.position = 'fixed';
-  gif.style.top = '0';
-  gif.style.left = '0';
-  gif.style.width = '100vw';
-  gif.style.height = '100vh';
-  gif.style.zIndex = '9999'; // Set a high z-index to ensure the GIF displays above other elements
-
-  document.body.appendChild(gif);
-
-  // Preload the new GIF
-  var newGIF = new Image();
-  newGIF.src = 'https://dl.dropboxusercontent.com/scl/fi/8yl3s8jeuxl44566w6e68/f801a36277fef9657a41b4c5954506e1.gif?rlkey=54xg0j5qdsx3cqitweqix3hh8&dl=0';
-
-  // After 4 seconds, replace the GIF with the new one
-  setTimeout(function() {
-    gif.src = newGIF.src; // Replace the source with the preloaded GIF
-  }, 4500); // 4000 milliseconds = 4 seconds
+function preloadNewGIF() {
+    var newGIF = new Image();
+    newGIF.src = 'https://dl.dropboxusercontent.com/scl/fi/8yl3s8jeuxl44566w6e68/f801a36277fef9657a41b4c5954506e1.gif?rlkey=54xg0j5qdsx3cqitweqix3hh8&dl=0';
 }
+
+// Function to display the initial GIF and preload the new GIF
+function showGIF() {
+    var gif = document.createElement('img');
+    gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0';
+    gif.style.position = 'fixed';
+    gif.style.top = '0';
+    gif.style.left = '0';
+    gif.style.width = '100vw';
+    gif.style.height = '100vh';
+    gif.style.zIndex = '9999'; // Set a high z-index to ensure the GIF displays above other elements
+
+    document.body.appendChild(gif);
+
+    // Preload the new GIF immediately
+    preloadNewGIF();
+
+    // After 4 seconds, replace the GIF with the new one
+    setTimeout(function() {
+        gif.src = 'https://dl.dropboxusercontent.com/scl/fi/8yl3s8jeuxl44566w6e68/f801a36277fef9657a41b4c5954506e1.gif?rlkey=54xg0j5qdsx3cqitweqix3hh8&dl=0';
+    }, 4500); // 4000 milliseconds = 4 seconds
+}
+function startChangeBackgroundInterval() {
+    changeBackgroundInterval = setInterval(changeBackground, 1000); // Start the interval
+}
+
+
+
 
 
 </script>
