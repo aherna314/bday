@@ -14,7 +14,7 @@
 
   #button-container {
     text-align: center;
-    margin-top: 20px; /* Adjust top margin */
+    margin-top: 10px; /* Adjust top margin */
   }
 
   body {
@@ -41,7 +41,7 @@
     opacity: 0.5; /* Adjust opacity (0.0 to 1.0) */
   }
 
-  #header {
+#header {
     text-align: center;
     margin-top: 50px;
   }
@@ -64,7 +64,8 @@
 
   #party-info {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px; /* Adjusted margin */
+    margin-bottom: 10px; /* Adjusted margin */
   }
 
   #play-button, #no-button {
@@ -197,17 +198,17 @@
   }
 
   function showGIF() {
-    var gif = document.createElement('img');
-    gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0'; // Replace 'URL_OF_YOUR_GIF' with the actual URL of your GIF
-    gif.style.position = 'fixed';
-    gif.style.top = '0';
-    gif.style.left = '0';
-    gif.style.width = '100vw';
-    gif.style.height = '100vh';
-    gif.style.zIndex = '9999'; // Set a high z-index to ensure the GIF displays above other elements
-    
-    document.body.appendChild(gif);
-  }
+  var gif = document.createElement('img');
+  gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0';
+  gif.style.position = 'fixed';
+  gif.style.top = '0';
+  gif.style.left = '0';
+  gif.style.width = '100vw';
+  gif.style.height = '100vh';
+  gif.style.zIndex = '9999'; // Set a high z-index to ensure the GIF displays above other elements
+
+  document.body.appendChild(gif);
+}
 
 
 </script>
