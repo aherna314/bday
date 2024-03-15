@@ -63,7 +63,7 @@
     margin-bottom: 10px; /* Adjusted margin */
   }
 
-  #play-button,  #no-button {
+ #play-button,  #no-button {
     margin: 10px;
     padding: 10px 20px;
     font-size: 20px;
@@ -71,11 +71,13 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    display:inline-block;
   }
 
   #play-button.clicked, #no-button.clicked {
     animation: glow 1s infinite alternate;
   }
+
 
   @keyframes glow {
     from {
@@ -85,11 +87,29 @@
       box-shadow: 0 0 20px pink, 0 0 30px pink, 0 0 40px pink;
     }
   }
-</style></head>
+</style>
+<script>
+  var backgroundImages = [
+    'https://dl.dropboxusercontent.com/scl/fi/hphl9nmu54b5mbtyl8bps/red.png?rlkey=4m4vbpmeycv35p8d0qvdgpvad&dl=0', /* Red background image */
+    'https://dl.dropboxusercontent.com/scl/fi/orbxrvmcbtf1ypws5ndct/wp4477741-plain-green-wallpapers.jpg?rlkey=5sadca731k4eddys68g9t6k1v&dl=0', /* Green background image */
+    'https://dl.dropboxusercontent.com/scl/fi/fz0hqs9pbsrdgp072n918/blue.jpg?rlkey=f4rwejl7844rggfmuifxs1sij&dl=0'  /* Blue background image */
+  ];
+  var imageIndex = 0;
+
+  function changeBackground() {
+    document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.opacity = "0.7"; // Set opacity to 0.7
+    imageIndex = (imageIndex + 1) % backgroundImages.length;
+	setInterval(changeBackground, 1000); // 1000 milliseconds = 1 second
+  }
+
+
+</script></head>
 <body>
 <div id="container">
 
-  <!-- <div id="overlay"></div> -->
+  <div id="overlay"></div>
   <div id="header">
     <h1>ALEXA 23</h1>
   </div>
@@ -101,11 +121,12 @@
     <p style="color: white; font-weight: bold;">if u dont go ur gay</p>
   </div>
   <!-- Button to play music -->
-  <div id="center-container">
+ 
   <div id="button-container">
-    <button id="play-button" onclick="showTicket(); playMusic(); changeBackground()">Si?</button>
+    <button id="play-button" onclick="changeBackground();showTicket(); playMusic() ">Si?</button>
     <button id="no-button" onclick="showGIF()">No?</button>
-  </div>
+
+
 </div>
 <script>
   function playMusic() {
@@ -121,14 +142,34 @@
   }
 
   function showTicket() {
+    // Create a container for the ticket and apply overlay to it
+    var ticketContainer = document.createElement('div');
+    ticketContainer.style.position = 'fixed';
+    ticketContainer.style.top = '0';
+    ticketContainer.style.left = '0';
+    ticketContainer.style.width = '100%';
+    ticketContainer.style.height = '100%';
+    ticketContainer.style.pointerEvents = 'none'; // Ensure the overlay doesn't block interactions
+    ticketContainer.style.zIndex = '1000'; // Ensure the container is on top of other content
+    ticketContainer.style.opacity = '0.5'; // Set the opacity of the overlay
+
+    // Create the ticket image
     var ticket = document.createElement('img');
-    ticket.src = 'https://dl.dropboxusercontent.com/scl/fi/bbddavyk3t5hguqwdy3sp/gojo.png?rlkey=3cpbko6513dqm5wbz8s21yjom&dl=0';
-    ticket.style.position = 'fixed';
+    ticket.src = 'https://dl.dropboxusercontent.com/scl/fi/xuf0wzpoubfia3mdvcw9o/chuu-loona.gif?rlkey=e2vflrqhhhg8cqh3g4nbyav90&dl=0';
+    ticket.style.position = 'absolute';
     ticket.style.top = '50%';
     ticket.style.left = '50%';
     ticket.style.transform = 'translate(-50%, -50%)';
     ticket.style.width = '100px'; // Initial width
     ticket.style.height = '100px'; // Initial height
+
+    // Append the ticket to the container
+    ticketContainer.appendChild(ticket);
+
+    // Append the container to the body
+    document.body.appendChild(ticketContainer);
+
+
 
     var dx = 20; // Change in x-coordinate
     var dy = 20; // Change in y-coordinate
@@ -162,23 +203,29 @@
 
     document.body.appendChild(ticket); // Append the ticket to the body
 }
+function showGIF() {
+  var gif = document.createElement('img');
+  gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0';
+  gif.style.position = 'fixed';
+  gif.style.top = '0';
+  gif.style.left = '0';
+  gif.style.width = '100vw';
+  gif.style.height = '100vh';
+  gif.style.zIndex = '9999'; // Set a high z-index to ensure the GIF displays above other elements
 
-  var backgroundImages = [
-    'https://dl.dropboxusercontent.com/scl/fi/hphl9nmu54b5mbtyl8bps/red.png?rlkey=4m4vbpmeycv35p8d0qvdgpvad&dl=0', /* Red background image */
-    'https://dl.dropboxusercontent.com/scl/fi/orbxrvmcbtf1ypws5ndct/wp4477741-plain-green-wallpapers.jpg?rlkey=5sadca731k4eddys68g9t6k1v&dl=0', /* Green background image */
-    'https://dl.dropboxusercontent.com/scl/fi/fz0hqs9pbsrdgp072n918/blue.jpg?rlkey=f4rwejl7844rggfmuifxs1sij&dl=0'  /* Blue background image */
-  ];
-  var imageIndex = 0;
-  var changeInterval;
+  document.body.appendChild(gif);
 
-  function changeBackground() {
-  changeInterval = setInterval(function () {
-    document.documentElement.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
-    document.documentElement.style.backgroundSize = "cover";
-    document.documentElement.style.opacity = "0.7"; // Set opacity to 0.7
-    imageIndex = (imageIndex + 1) % backgroundImages.length;
-  }, 500); // Change background every 3 seconds
+  // Preload the new GIF
+  var newGIF = new Image();
+  newGIF.src = 'https://dl.dropboxusercontent.com/scl/fi/8yl3s8jeuxl44566w6e68/f801a36277fef9657a41b4c5954506e1.gif?rlkey=54xg0j5qdsx3cqitweqix3hh8&dl=0';
+
+  // After 4 seconds, replace the GIF with the new one
+  setTimeout(function() {
+    gif.src = newGIF.src; // Replace the source with the preloaded GIF
+  }, 4000); // 4000 milliseconds = 4 seconds
 }
+
+
 </script>
 </body>
 </html>
