@@ -6,14 +6,16 @@
 <title>^_^</title>
 <style>
   #center-container {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Ensure full height */
-}
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Ensure full height */
+  }
+
   #button-container {
-  text-align: center;
-}
+    text-align: center;
+  }
+
   body {
     background-image: url('https://dl.dropboxusercontent.com/scl/fi/jvzwb6nd2anppuorjmv2y/F8E3E8_1200x.png?rlkey=jwk742kyhbvyn2miky8ma1ffk&dl=0'); /* Initial background image */
     background-size: cover;
@@ -21,9 +23,11 @@
     overflow: hidden;
     transition: background-image .1s ease-in-out; /* Add transition for smooth effect */
   }
+
   #container {
     position: relative;
   }
+
   #overlay {
     position: fixed;
     top: 0;
@@ -35,16 +39,19 @@
     z-index: 1000; /* Ensure the overlay is on top of other content */
     opacity: 0.5; /* Adjust opacity (0.0 to 1.0) */
   }
+
   #header {
     text-align: center;
     margin-top: 50px;
   }
+
   #header h1 {
     font-size: 80px;
     color: pink;
     text-shadow: 2px 2px 5px #ff00ff;
     animation: sparkleText 2s infinite alternate;
   }
+
   @keyframes sparkleText {
     from {
       text-shadow: 2px 2px 5px #ff00ff;
@@ -53,31 +60,35 @@
       text-shadow: 2px 2px 10px #ff00ff, -2px -2px 10px #ff00ff, 2px -2px 10px #ff00ff, -2px 2px 10px #ff00ff;
     }
   }
+
   #party-info {
     text-align: center;
     margin-top: 50px;
   }
-   #play-button, #no-button {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 20px;
-  background-color: pink;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-#play-button.clicked, #no-button.clicked {
-  animation: glow 1s infinite alternate;
-}
- @keyframes glow {
-  from {
-    box-shadow: 0 0 10px pink;
+
+  #play-button, #no-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: pink;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
-  to {
-    box-shadow: 0 0 20px pink, 0 0 30px pink, 0 0 40px pink;
+
+  #play-button.clicked, #no-button.clicked {
+    animation: glow 1s infinite alternate;
   }
-}
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 10px pink;
+    }
+    to {
+      box-shadow: 0 0 20px pink, 0 0 30px pink, 0 0 40px pink;
+    }
+  }
 </style>
 </head>
 <body>
@@ -95,11 +106,11 @@
   </div>
   <!-- Button to play music -->
   <div id="center-container">
-  <div id="button-container">
-    <button id="play-button" onclick="showTicket(); playMusic(); changeBackground()">Si?</button>
-    <button id="no-button" onclick="showGIF()">No?</button>
+    <div id="button-container">
+      <button id="play-button" onclick="showTicket(); playMusic(); changeBackground()">Si?</button>
+      <button id="no-button" onclick="showGIF()">No?</button>
+    </div>
   </div>
-</div>
 </div>
 </div>
 <script>
