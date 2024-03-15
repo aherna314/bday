@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>^_^</title>
 <style>
+  #button-container {
+  text-align: center;
+}
   body {
     background-image: url('https://dl.dropboxusercontent.com/scl/fi/jvzwb6nd2anppuorjmv2y/F8E3E8_1200x.png?rlkey=jwk742kyhbvyn2miky8ma1ffk&dl=0'); /* Initial background image */
     background-size: cover;
@@ -49,26 +52,27 @@
     margin-top: 50px;
   }
    #play-button, #no-button {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 20px;
-    background-color: pink;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  #play-button.clicked,  #no-button.clicked  {
-    animation: glow 1s infinite alternate; /* Add glow animation */
-  }
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: pink;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+  
+#play-button.clicked, #no-button.clicked {
+  animation: glow 1s infinite alternate;
+}
   @keyframes glow {
-    from {
-      box-shadow: 0 0 10px pink;
-    }
-    to {
-      box-shadow: 0 0 20px pink, 0 0 30px pink, 0 0 40px pink;
-    }
+  from {
+    box-shadow: 0 0 10px pink;
   }
+  to {
+    box-shadow: 0 0 20px pink, 0 0 30px pink, 0 0 40px pink;
+  }
+}
 </style>
 </head>
 <body>
@@ -85,7 +89,7 @@
     <p style="color: white; font-weight: bold;">if u dont go ur gay</p>
   </div>
   <!-- Button to play music -->
-  <button id="play-button" onclick="showTicket(); playMusic()">Si?</button>
+  <button id="play-button" onclick="showTicket(); playMusic(); changeBackground()">Si?</button>
   <button id="no-button" onclick="showGIF()">No?</button>
 </div>
 <script>
