@@ -188,6 +188,9 @@ function handleNoButtonClick() {
         audio.pause();
         document.getElementById("play-button").classList.remove("clicked");
     }
+     setTimeout(function () {
+        audio.pause();
+    }, 5000); // Change this value to control the duration of the animation
 }
 
   function showTicket() {
