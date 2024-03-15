@@ -139,7 +139,6 @@ function changeBackground() {
     if (audio.paused) {
       audio.play();
       document.getElementById("play-button").classList.add("clicked");
-      changeBackground(); // Call the function to change background when the button is clicked
     } else {
       audio.pause();
       document.getElementById("play-button").classList.remove("clicked");
