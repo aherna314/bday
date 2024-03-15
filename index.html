@@ -1,33 +1,21 @@
-@@ -12,9 +12,16 @@
-    overflow: hidden;
-    transition: background-image .1s ease-in-out; /* Add transition for smooth effect */
-  }
-  #container {
-    position: relative;
-#center-container {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>^_^</title>
+<style>
+  #center-container {
     display: flex;
     justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-  }
-
+	@@ -17,6 +14,29 @@
   #button-container {
     text-align: center;
   }
 
-  #overlay {
-    position: fixed;
-    top: 0;
-@@ -46,21 +53,26 @@
-  }
-  #party-info {
+
+#party-info {
     text-align: center;
-    margin-top: 50px;
     margin-top: 10px; /* Adjusted margin */
     margin-bottom: 10px; /* Adjusted margin */
   }
-  #play-button {
-    display: block;
-    margin: 0 auto;
 
   #play-button,  #no-button {
     margin: 10px;
@@ -39,28 +27,70 @@
     cursor: pointer;
     display:inline-block;
   }
-  #play-button.clicked {
-    animation: glow 1s infinite alternate; /* Add glow animation */
 
   #play-button.clicked, #no-button.clicked {
     animation: glow 1s infinite alternate;
   }
 
 
+  body {
+    background-image: url('https://dl.dropboxusercontent.com/scl/fi/jvzwb6nd2anppuorjmv2y/F8E3E8_1200x.png?rlkey=jwk742kyhbvyn2miky8ma1ffk&dl=0'); /* Initial background image */
+	@@ -28,7 +48,6 @@
+  #container {
+    position: relative;
+  }
+  #overlay {
+    position: fixed;
+    top: 0;
+	@@ -40,19 +59,16 @@
+    z-index: 1000; /* Ensure the overlay is on top of other content */
+    opacity: 0.5; /* Adjust opacity (0.0 to 1.0) */
+  }
+  #header {
+    text-align: center;
+    margin-top: 50px;
+  }
+  #header h1 {
+    font-size: 80px;
+    color: pink;
+    text-shadow: 2px 2px 5px #ff00ff;
+    animation: sparkleText 2s infinite alternate;
+  }
+  @keyframes sparkleText {
+    from {
+      text-shadow: 2px 2px 5px #ff00ff;
+	@@ -61,28 +77,23 @@
+      text-shadow: 2px 2px 10px #ff00ff, -2px -2px 10px #ff00ff, 2px -2px 10px #ff00ff, -2px 2px 10px #ff00ff;
+    }
+  }
+  #party-info {
+    text-align: center;
+    margin-top: 50px;
+  }
+  #play-button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: pink;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #play-button.clicked {
+    animation: glow 1s infinite alternate; /* Add glow animation */
+  }
   @keyframes glow {
     from {
       box-shadow: 0 0 10px pink;
-@@ -85,13 +97,12 @@ <h1>ALEXA 23</h1>
+	@@ -102,17 +113,16 @@ <h1>ALEXA 23</h1>
+  <div id="party-info">
+    <!-- Replace this placeholder text with your party information -->
+    <p style="color: white; font-weight: bold;">voy a cumplir a&ntildeos !!!!</p>
+    <p style="color: white; font-weight: bold;">Fecha: Abril 13, 2024</p>
     <p style="color: white; font-weight: bold;">Lugar: Hehehe</p>
     <p style="color: white; font-weight: bold;">if u dont go ur gay</p>
   </div>
-  <!-- Button to play music -->
-  <button id="play-button" onclick="showTicket(); playMusic()">Si?</button>
-  <!-- Audio element for the music -->
-  <audio id="background-music" loop>
-    <source src="https://dl.dropboxusercontent.com/scl/fi/jjljz7vqz3u0bmvlrfmrb/Girl-Front-LOONA-ODD-EYE-Instrumental-Best-part.mp3?rlkey=pxe8molf8ayvqhdhr0n9cnyaj" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
    <div id="center-container">
   <div id="button-container">
     <button id="play-button" onclick="showTicket(); playMusic(); changeBackground()">Si?</button>
@@ -69,13 +99,12 @@
    </div>
 </div>
 <script>
-  function playMusic() {
-@@ -167,6 +178,19 @@ <h1>ALEXA 23</h1>
-      imageIndex = (imageIndex + 1) % backgroundImages.length;
-    }, 500); // Change background every 3 seconds
-  }
+  var audioDuration = 7000; // Set the duration in milliseconds (60 seconds in this example)
+	@@ -177,7 +187,18 @@ <h1>ALEXA 23</h1>
 
-  function showGIF() {
+    document.body.appendChild(ticket); // Append the ticket to the body
+}
+function showGIF() {
   var gif = document.createElement('img');
   gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0';
   gif.style.position = 'fixed';
@@ -87,6 +116,13 @@
 
   document.body.appendChild(gif);
 }
+
+
+  var backgroundImages = [
+	@@ -196,23 +217,6 @@ <h1>ALEXA 23</h1>
+      imageIndex = (imageIndex + 1) % backgroundImages.length;
+    }, 500); // Change background every 3 seconds
+  }
 </script>
 </body>
 </html>
