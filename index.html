@@ -3,49 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>^_^</title>
+<title>Alexa's 23rd Birthday</title>
 <style>
-  #center-container {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-  }
-
-  #button-container {
-    text-align: center;
-  }
-  
-
-#party-info {
-    text-align: center;
-    margin-top: 10px; /* Adjusted margin */
-    margin-bottom: 10px; /* Adjusted margin */
-  }
-
-  #play-button,  #no-button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 20px;
-    background-color: pink;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display:inline-block;
-  }
-
-  #play-button.clicked, #no-button.clicked {
-    animation: glow 1s infinite alternate;
-  }
-
-
- body {
+  body {
     background-image: url('https://dl.dropboxusercontent.com/scl/fi/jvzwb6nd2anppuorjmv2y/F8E3E8_1200x.png?rlkey=jwk742kyhbvyn2miky8ma1ffk&dl=0'); /* Initial background image */
     background-size: cover;
     font-family: Arial, sans-serif;
     overflow: hidden;
     transition: background-image .1s ease-in-out; /* Add transition for smooth effect */
   }
-#overlay {
+  #container {
+    position: relative;
+  }
+  #overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -56,10 +26,6 @@
     z-index: 1000; /* Ensure the overlay is on top of other content */
     opacity: 0.5; /* Adjust opacity (0.0 to 1.0) */
   }
-  #container {
-    position: relative;
-  }
-
   #header {
     text-align: center;
     margin-top: 50px;
@@ -113,33 +79,27 @@
   </div>
   <div id="party-info">
     <!-- Replace this placeholder text with your party information -->
+    <p style="color: white; font-weight: bold;">Join us to celebrate Alexa's 23rd birthday!</p>
     <p style="color: white; font-weight: bold;">voy a cumplir a&ntildeos !!!!</p>
     <p style="color: white; font-weight: bold;">Fecha: Abril 13, 2024</p>
     <p style="color: white; font-weight: bold;">Lugar: Hehehe</p>
     <p style="color: white; font-weight: bold;">if u dont go ur gay</p>
   </div>
-   <div id="center-container">
-  <div id="button-container">
-    <button id="play-button" onclick="showTicket(); playMusic(); changeBackground()">Si?</button>
-    <button id="no-button" onclick="showGIF()">No?</button>
-  </div>
-   </div>
+  <!-- Button to play music -->
+  <button id="play-button" onclick="showTicket(); playMusic()">Si?</button>
+  <!-- Audio element for the music -->
+  <audio id="background-music" loop>
+    <source src="https://dl.dropboxusercontent.com/scl/fi/jjljz7vqz3u0bmvlrfmrb/Girl-Front-LOONA-ODD-EYE-Instrumental-Best-part.mp3?rlkey=pxe8molf8ayvqhdhr0n9cnyaj" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 </div>
 <script>
-  var audioDuration = 7000; // Set the duration in milliseconds (60 seconds in this example)
-
   function playMusic() {
     var audio = document.getElementById("background-music");
     if (audio.paused) {
       audio.play();
       document.getElementById("play-button").classList.add("clicked");
       changeBackground(); // Call the function to change background when the button is clicked
-
-      // Stop the music after the specified duration
-      setTimeout(function() {
-        audio.pause();
-        document.getElementById("play-button").classList.remove("clicked");
-      }, audioDuration);
     } else {
       audio.pause();
       document.getElementById("play-button").classList.remove("clicked");
@@ -188,18 +148,7 @@
 
     document.body.appendChild(ticket); // Append the ticket to the body
 }
-function showGIF() {
-  var gif = document.createElement('img');
-  gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0';
-  gif.style.position = 'fixed';
-  gif.style.top = '0';
-  gif.style.left = '0';
-  gif.style.width = '100vw';
-  gif.style.height = '100vh';
-  gif.style.zIndex = '9999'; // Set a high z-index to ensure the GIF displays above other elements
 
-  document.body.appendChild(gif);
-}
 
 
   var backgroundImages = [
@@ -210,8 +159,6 @@ function showGIF() {
   var imageIndex = 0;
   var changeInterval;
 
-
-  
   function changeBackground() {
     changeInterval = setInterval(function () {
       document.body.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
