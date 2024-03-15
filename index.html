@@ -80,17 +80,13 @@
   <div id="party-info">
     <!-- Replace this placeholder text with your party information -->
     <p style="color: white; font-weight: bold;">voy a cumplir a&ntildeos !!!!</p>
-    <p style="color: white; font-weight: bold;">Fecha: Abril 13, 2024</p>
-    <p style="color: white; font-weight: bold;">Lugar: Hehehe</p>
+    <p style="color: white; font-weight: bold;">Fecha: Abril 7 o 13 (check back for updates)</p>
+    <p style="color: white; font-weight: bold;">Lugar: Alberca de Lalo, 200 Desert Pass</p>
     <p style="color: white; font-weight: bold;">if u dont go ur gay</p>
   </div>
   <!-- Button to play music -->
   <button id="play-button" onclick="showTicket(); playMusic()">Si?</button>
-  <!-- Audio element for the music -->
-  <audio id="background-music" loop>
-    <source src="https://dl.dropboxusercontent.com/scl/fi/jjljz7vqz3u0bmvlrfmrb/Girl-Front-LOONA-ODD-EYE-Instrumental-Best-part.mp3?rlkey=pxe8molf8ayvqhdhr0n9cnyaj" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <button id="no-button" onclick="showGIF()">No?</button>
 </div>
 <script>
   var audioDuration = 7000; // Set the duration in milliseconds (60 seconds in this example)
@@ -173,6 +169,20 @@
       document.body.style.opacity = "0.7"; // Set opacity to 0.7
       imageIndex = (imageIndex + 1) % backgroundImages.length;
     }, 500); // Change background every 3 seconds
+  }
+  function showGIF() {
+    var gif = document.createElement('img');
+    gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0'; // Replace 'URL_OF_YOUR_GIF' with the actual URL of your GIF
+    gif.style.position = 'fixed';
+    gif.style.top = '0';
+    gif.style.left = '0';
+    gif.style.width = '100vw';
+    gif.style.height = '100vh';
+    gif.style.zIndex = '9999'; // Set a high z-index to ensure the GIF displays above other elements
+    gif.onclick = function() {
+      gif.remove(); // Remove the GIF when clicked
+    };
+    document.body.appendChild(gif);
   }
 </script>
 </body>
