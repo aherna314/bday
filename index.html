@@ -1,17 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>^_^</title>
+<title>Alexa's 23rd Birthday</title>
 <style>
+  body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+  #container {
+    position: relative;
+  }
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url('https://i.gifer.com/WG8P.gif'); /* Transparent GIF */
+    z-index: 1000; /* Ensure the overlay is on top of other content */
+    opacity: 0.5; /* Adjust opacity (0.0 to 1.0) */
+  }
+  #header {
+    text-align: center;
+    margin-top: 50px;
+  }
+
   #center-container {
     display: flex;
     justify-content: center; /* Center horizontally */
-	@@ -17,6 +14,29 @@
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Ensure full height */
+  }
+
   #button-container {
     text-align: center;
   }
 
 
-#party-info {
+
+
+
+
+  #header h1 {
+    font-size: 80px;
+    color: pink;
+    text-shadow: 2px 2px 5px #ff00ff;
+    animation: sparkleText 2s infinite alternate;
+  }
+
+  @keyframes sparkleText {
+    from {
+      text-shadow: 2px 2px 5px #ff00ff;
+    }
+    to {
+      text-shadow: 2px 2px 10px #ff00ff, -2px -2px 10px #ff00ff, 2px -2px 10px #ff00ff, -2px 2px 10px #ff00ff;
+    }
+  }
+
+  #party-info {
     text-align: center;
     margin-top: 10px; /* Adjusted margin */
     margin-bottom: 10px; /* Adjusted margin */
@@ -25,65 +75,28 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display:inline-block;
   }
 
   #play-button.clicked, #no-button.clicked {
     animation: glow 1s infinite alternate;
   }
 
-
-  body {
-    background-image: url('https://dl.dropboxusercontent.com/scl/fi/jvzwb6nd2anppuorjmv2y/F8E3E8_1200x.png?rlkey=jwk742kyhbvyn2miky8ma1ffk&dl=0'); /* Initial background image */
-	@@ -28,7 +48,6 @@
-  #container {
-    position: relative;
-  }
-  #overlay {
-    position: fixed;
-    top: 0;
-	@@ -40,19 +59,16 @@
-    z-index: 1000; /* Ensure the overlay is on top of other content */
-    opacity: 0.5; /* Adjust opacity (0.0 to 1.0) */
-  }
-  #header {
-    text-align: center;
-    margin-top: 50px;
-  }
-  #header h1 {
-    font-size: 80px;
-    color: pink;
-    text-shadow: 2px 2px 5px #ff00ff;
-    animation: sparkleText 2s infinite alternate;
-  }
-  @keyframes sparkleText {
-    from {
-      text-shadow: 2px 2px 5px #ff00ff;
-	@@ -61,28 +77,23 @@
-      text-shadow: 2px 2px 10px #ff00ff, -2px -2px 10px #ff00ff, 2px -2px 10px #ff00ff, -2px 2px 10px #ff00ff;
-    }
-  }
-  #party-info {
-    text-align: center;
-    margin-top: 50px;
-  }
-  #play-button {
-    display: block;
-    margin: 0 auto;
-    padding: 10px 20px;
-    font-size: 20px;
-    background-color: pink;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  #play-button.clicked {
-    animation: glow 1s infinite alternate; /* Add glow animation */
-  }
   @keyframes glow {
     from {
       box-shadow: 0 0 10px pink;
-	@@ -102,17 +113,16 @@ <h1>ALEXA 23</h1>
+    }
+    to {
+      box-shadow: 0 0 20px pink, 0 0 30px pink, 0 0 40px pink;
+    }
+  }
+</style></head>
+<body>
+<div id="container">
+
+  <div id="overlay"></div>
+  <div id="header">
+    <h1>ALEXA 23</h1>
+  </div>
   <div id="party-info">
     <!-- Replace this placeholder text with your party information -->
     <p style="color: white; font-weight: bold;">voy a cumplir a&ntildeos !!!!</p>
@@ -91,38 +104,85 @@
     <p style="color: white; font-weight: bold;">Lugar: Hehehe</p>
     <p style="color: white; font-weight: bold;">if u dont go ur gay</p>
   </div>
-   <div id="center-container">
+  <!-- Button to play music -->
+  <div id="center-container">
   <div id="button-container">
     <button id="play-button" onclick="showTicket(); playMusic(); changeBackground()">Si?</button>
     <button id="no-button" onclick="showGIF()">No?</button>
   </div>
-   </div>
 </div>
 <script>
-  var audioDuration = 7000; // Set the duration in milliseconds (60 seconds in this example)
-	@@ -177,7 +187,18 @@ <h1>ALEXA 23</h1>
+  function playMusic() {
+    var audio = document.getElementById("background-music");
+    if (audio.paused) {
+      audio.play();
+      document.getElementById("play-button").classList.add("clicked");
+      changeBackground(); // Call the function to change background when the button is clicked
+    } else {
+      audio.pause();
+      document.getElementById("play-button").classList.remove("clicked");
+    }
+  }
+
+  function showTicket() {
+    var ticket = document.createElement('img');
+    ticket.src = 'https://dl.dropboxusercontent.com/scl/fi/bbddavyk3t5hguqwdy3sp/gojo.png?rlkey=3cpbko6513dqm5wbz8s21yjom&dl=0';
+    ticket.style.position = 'fixed';
+    ticket.style.top = '50%';
+    ticket.style.left = '50%';
+    ticket.style.transform = 'translate(-50%, -50%)';
+    ticket.style.width = '100px'; // Initial width
+    ticket.style.height = '100px'; // Initial height
+
+    var dx = 20; // Change in x-coordinate
+    var dy = 20; // Change in y-coordinate
+    var x = window.innerWidth / 2; // Initial x-coordinate
+    var y = window.innerHeight / 2; // Initial y-coordinate
+
+    var interval = setInterval(function() {
+        x += dx; // Update x-coordinate
+        y += dy; // Update y-coordinate
+
+        // Check horizontal boundaries
+        if (x < 0 || x + ticket.width > window.innerWidth) {
+            dx = -dx; // Reverse the direction
+            x += dx * 2; // Move back to the boundary
+        }
+
+        // Check vertical boundaries
+        if (y < 0 || y + ticket.height > window.innerHeight) {
+            dy = -dy; // Reverse the direction
+            y += dy * 2; // Move back to the boundary
+        }
+
+        ticket.style.left = x + 'px'; // Update left position
+        ticket.style.top = y + 'px'; // Update top position
+    }, 1000 / 60); // Update the position 60 times per second
+
+    setTimeout(function () {
+        clearInterval(interval); // Stop the animation after a certain duration
+        ticket.remove(); // Remove the image from the DOM
+    }, 5000); // Change this value to control the duration of the animation
 
     document.body.appendChild(ticket); // Append the ticket to the body
 }
-function showGIF() {
-  var gif = document.createElement('img');
-  gif.src = 'https://www.dl.dropboxusercontent.com/scl/fi/lk1buig6sipw74zdcui5q/JDbW3j.gif?rlkey=cwzk3fp7a24w4zo34ef7ot402&dl=0';
-  gif.style.position = 'fixed';
-  gif.style.top = '0';
-  gif.style.left = '0';
-  gif.style.width = '100vw';
-  gif.style.height = '100vh';
-  gif.style.zIndex = '9999'; // Set a high z-index to ensure the GIF displays above other elements
-
-  document.body.appendChild(gif);
-}
-
 
   var backgroundImages = [
-	@@ -196,23 +217,6 @@ <h1>ALEXA 23</h1>
-      imageIndex = (imageIndex + 1) % backgroundImages.length;
-    }, 500); // Change background every 3 seconds
-  }
+    'https://dl.dropboxusercontent.com/scl/fi/hphl9nmu54b5mbtyl8bps/red.png?rlkey=4m4vbpmeycv35p8d0qvdgpvad&dl=0', /* Red background image */
+    'https://dl.dropboxusercontent.com/scl/fi/orbxrvmcbtf1ypws5ndct/wp4477741-plain-green-wallpapers.jpg?rlkey=5sadca731k4eddys68g9t6k1v&dl=0', /* Green background image */
+    'https://dl.dropboxusercontent.com/scl/fi/fz0hqs9pbsrdgp072n918/blue.jpg?rlkey=f4rwejl7844rggfmuifxs1sij&dl=0'  /* Blue background image */
+  ];
+  var imageIndex = 0;
+  var changeInterval;
+
+  function changeBackground() {
+  changeInterval = setInterval(function () {
+    document.documentElement.style.backgroundImage = "url('" + backgroundImages[imageIndex] + "')";
+    document.documentElement.style.backgroundSize = "cover";
+    document.documentElement.style.opacity = "0.7"; // Set opacity to 0.7
+    imageIndex = (imageIndex + 1) % backgroundImages.length;
+  }, 500); // Change background every 3 seconds
+}
 </script>
 </body>
 </html>
